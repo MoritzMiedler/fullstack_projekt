@@ -1,0 +1,70 @@
+//USER TEST-ROUTES
+GET http://localhost:3000/users
+###
+POST http://localhost:3000/users
+content-type: application/json
+
+{
+    "user_name":"victor pawlek",
+    "user_birthday" : "2003-02-08",
+    "user_activitylevel":4
+}
+###
+PATCH http://localhost:3000/users/14
+content-type: application/json
+
+{
+    "user_name":"pictor vawlek",
+    "user_activitylevel":3
+}
+###
+DELETE http://localhost:3000/users/16
+###
+
+//PLAN TEST-ROUTES
+GET http://localhost:3000/plans
+###
+POST http://localhost:3000/plans
+content-type: application/json
+
+{
+    "plan_description":"ABC TEST TEST",
+    "plan_name":"TESTPLAN 8",
+    "plan_duration":"4",
+    "plan_type":"TYP 2",
+    "plan_price":"50"
+}
+###
+PATCH http://localhost:3000/plans/6
+content-type: application/json
+
+{
+    "plan_price":4000
+}
+###
+DELETE http://localhost:3000/plans/10
+###
+
+//SESSION TEST-ROUTES
+GET http://localhost:3000/sessions
+###
+POST http://localhost:3000/sessions
+content-type: application/json
+
+{
+    "session_dauer":"1.5h",
+    "session_datum":"2021-12-12",
+    "user_id":"3",
+    "plan_id":"1",
+    "accepted":"true"
+}
+###
+PATCH http://localhost:3000/sessions/1
+content-type: application/json
+
+{
+    "accepted":"false"
+}
+###
+DELETE http://localhost:3000/sessions/13
+###
