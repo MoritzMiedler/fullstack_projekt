@@ -8,10 +8,17 @@ async function getUsers() {
   };
 }
 
-async function addUser(user_name, user_birthday, user_activitylevel) {
+async function addUser(
+  user_firstname,
+  user_lastname,
+  user_birthday,
+  user_email,
+  user_password,
+  user_activitylevel,
+) {
   await db.query(
-    'insert into users(user_name, user_birthday, user_activitylevel) values ($1,$2,$3);',
-    [user_name, user_birthday, user_activitylevel],
+    'insert into users(user_firstname, user_lastname,user_birthday,user_activitylevel,user_email,user_password,) values ($1,$2,$3,$4,$5,$6);',
+    [user_firstname, user_lastname, user_birthday, user_activitylevel, user_email, user_password],
   );
 }
 
@@ -48,11 +55,13 @@ async function getPlans() {
   };
 }
 
-async function addPlan(plan_description, plan_name, plan_duration, plan_type, plan_price) {
-  await db.query(
-    'insert into plan(plan_description, plan_name, plan_duration, plan_type, plan_price) values ($1,$2,$3,$4,$5);',
-    [plan_description, plan_name, plan_duration, plan_type, plan_price],
-  );
+async function addPlan(plan_desc, plan_title, plan_type, plan_price) {
+  await db.query('insert into plan(plan_desc, plan_title, plan_type, plan_price) values ($1,$2,$3,$4);', [
+    plan_desc,
+    plan_title,
+    plan_type,
+    plan_price,
+  ]);
 }
 
 async function editPlan(plan_data, id) {
@@ -87,10 +96,10 @@ async function getSessions() {
   };
 }
 
-async function addSession(session_dauer, session_datum, user_id, plan_id, accepted) {
+async function addSession(session_period, session_date, plan_id, user_id, accepted) {
   await db.query(
-    'insert into sessions(session_dauer, session_datum, user_id, plan_id, accepted) values ($1,$2,$3,$4,$5);',
-    [session_dauer, session_datum, user_id, plan_id, accepted],
+    'insert into sessions(session_period, session_date, plan_id, user_id, accepted) values ($1,$2,$3,$4,$5);',
+    [session_period, session_date, plan_id, user_id, accepted],
   );
 }
 
