@@ -1,15 +1,24 @@
 <template>
-  <Login />
+  <div>
+    <Sessions v-if="showSessions"></Sessions>
+    <Plans v-if="!showSessions"></Plans>
+  </div>
 </template>
 
 <script>
-import Login from "../components/Login.vue";
+import Sessions from "../components/Sessions.vue";
+import Plans from "../components/Plans.vue";
 
 export default {
   name: "Home",
-
   components: {
-    Login,
+    Sessions,
+    Plans,
+  },
+  data() {
+    return {
+      showSessions: true,
+    };
   },
 };
 </script>

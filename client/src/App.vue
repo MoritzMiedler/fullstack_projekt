@@ -29,13 +29,19 @@
           <span class="mx-auto">Login</span>
         </v-btn>
       </v-app-bar>
-      <v-main> </v-main>
+      <v-main>
+        <router-view />
+      </v-main>
     </v-app>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {};
+  },
+};
 </script>
 <style>
 html::-webkit-scrollbar {
