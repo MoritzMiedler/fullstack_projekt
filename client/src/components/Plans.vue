@@ -1,60 +1,31 @@
 <template>
-  <div>
-    <v-card
-      v-for="plan in plans"
-      :key="plan.plan_id"
+  <v-row class="d-flex flex-wrap"
+    ><PlanCard
       class="ma-5 d-flex flex-column justify-end"
-      style=""
-    >
-      <!-- <v-img :src="plan.image"></v-img> -->
-      <div class="pa-3">
-        <span class="text-h5">{{ plan.plan_title }}</span>
-        <br />
-        Type:
-        <span class="font-weight-bold">{{ plan.plan_type }}</span>
-        <br />
-        Price:
-        <span class="font-weight-bold">{{ plan.plan_price }}</span>
-        <br />
-        {{ plan.plan_desc }}
-        <br />
-        <v-btn class="amber darken-3 mt-2" @click="buttonClick()">Book Session</v-btn>
-      </div>
-    </v-card>
-  </div>
+      style="width: 400px"
+      v-for="(plan, i) in plans"
+      :key="i"
+      :plan="plan"
+    ></PlanCard
+  ></v-row>
 </template>
 
 <script>
-import axios from "axios";
+import PlanCard from "@/components/PlanCard.vue";
 
 export default {
   data() {
-    return {
-      plans: [],
-    };
+    return {};
   },
-
-  methods: {
-    async getPlans() {
-      const plans = await axios({ method: "GET", url: "http://127.0.0.1:3000/plans" });
-      console.log(plans.data);
-      this.plans = plans.data;
+  props: {
+    plans: {
+      type: Array,
     },
-    // async buyCar(event) {
-    //   event.title += " RESERVED!";
-    //   await axios({
-    //     method: "PATCH",
-    //     url: "http://127.0.0.1:3000/cars/" + event.id,
-    //     "content-type": "application/json",
-    //     data: event,
-    //   });
-    // },
   },
-
-  created() {
-    this.getPlans();
+  components: {
+    PlanCard,
   },
 };
 </script>
 
-<style lang="css" scoped></style>
+<style lang="scss" scoped></style>

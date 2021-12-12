@@ -1,20 +1,17 @@
 <template>
   <v-card>
-    <!-- <v-img :src="cardata.image"></v-img> -->
+    <!-- <v-img :src="plan.image"></v-img> -->
 
     <div class="pa-3">
-      <span class="text-h5">{{ plans.plan_title }}</span>
+      <span class="text-h5">{{ plan.plan_title }}<span></span></span>
+      <br />
+      Type:
+      <span class="font-weight-bold">{{ plan.plan_type }}</span>
+      <br />
+      Price: <span class="font-weight-bold">{{ plan.plan_price }}</span>
       <br />
 
-      Typ: <span class="font-weight-bold">{{ plans.plan_type }}</span>
-      <br />
-      Price: <span class="font-weight-bold">{{ plans.plan_price }}$ </span>
-      <br />
-
-      {{ plan.plan_desc }}
-      <br />
-      <!-- <v-btn class="red darken-3 mt-2 white--text"
-      @click="buttonClick()">Book Session</v-btn> -->
+      <v-btn class="amber darken-3" :to="'/booksession/' + plan.plan_id">Book Session</v-btn>
     </div>
   </v-card>
 </template>
@@ -22,17 +19,12 @@
 <script>
 export default {
   props: {
-    plans: {
-      type: Array,
+    plan: {
+      type: Object,
       default: () => {},
     },
-  },
-  methods: {
-    // buttonClick() {
-    //   this.$emit("bookSession", this.cardata);
-    // },
   },
 };
 </script>
 
-<style lang="css" scoped></style>
+<style lang="scss" scoped></style>
