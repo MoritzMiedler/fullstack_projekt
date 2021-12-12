@@ -22,8 +22,11 @@
         <v-btn to="/" text active-class="amber--text darken-3 " class="mr-3">
           <span class="mx-auto">Home</span>
         </v-btn>
-        <v-btn to="/Blog" text active-class="amber--text darken-3 " class="mr-3">
-          <span class="mx-auto">Blog</span>
+        <v-btn to="/Sessions" text active-class="amber--text darken-3 " class="mr-3">
+          <span class="mx-auto">Sessions</span>
+        </v-btn>
+        <v-btn to="/Plans" text active-class="amber--text darken-3 " class="mr-3">
+          <span class="mx-auto">Plans</span>
         </v-btn>
         <v-btn to="/Login" text active-class="amber--text darken-3 " class="mr-3">
           <span class="mx-auto">Login</span>

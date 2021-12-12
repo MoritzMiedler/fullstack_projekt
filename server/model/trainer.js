@@ -48,7 +48,7 @@ async function deleteUser(id) {
 }
 
 async function getPlans() {
-  const { rows } = await db.query('SELECT * FROM plan;');
+  const { rows } = await db.query('SELECT * FROM plans;');
   return {
     code: 200,
     data: rows,
@@ -56,7 +56,7 @@ async function getPlans() {
 }
 
 async function addPlan(plan_desc, plan_title, plan_type, plan_price) {
-  await db.query('insert into plan(plan_desc, plan_title, plan_type, plan_price) values ($1,$2,$3,$4);', [
+  await db.query('insert into plans(plan_desc, plan_title, plan_type, plan_price) values ($1,$2,$3,$4);', [
     plan_desc,
     plan_title,
     plan_type,
@@ -67,14 +67,14 @@ async function addPlan(plan_desc, plan_title, plan_type, plan_price) {
 async function editPlan(plan_data, id) {
   let upd = [];
   for (key in plan_data) upd.push(`${key} = '${plan_data[key]}'`);
-  const cmd = 'UPDATE plan SET ' + upd.join(', ') + ' WHERE plan_id = $1';
+  const cmd = 'UPDATE plans SET ' + upd.join(', ') + ' WHERE plan_id = $1';
   await db.query(cmd, [id]);
 }
 
 async function deletePlan(id) {
   await db.query('delete from sessions where plan_id = $1;', [id]);
   await db.query('delete from user_plan where plan_id = $1;', [id]);
-  const { rowCount } = await db.query('delete from plan where plan_id = $1;', [id]);
+  const { rowCount } = await db.query('delete from plans where plan_id = $1;', [id]);
   console.log(rowCount);
   if (rowCount === 1) {
     return {
