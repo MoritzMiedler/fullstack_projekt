@@ -30,36 +30,39 @@
 </template>
 
 <script>
-// import axios from "axios";
+import axios from "axios";
 
 export default {
   data() {
-    return {};
+    return {
+      plans: [],
+    };
   },
   props: {
     id: {
       type: String,
     },
-    plans: {
-      type: Array,
-    },
   },
 
   computed: {
     filterPlan() {
-      return this.plans.find((el) => el.plan_id === this.plan_id);
+      const a = this.plans.find((el) => el.plan_id == this.id);
+      console.log(this.plans);
+      return a;
     },
   },
   methods: {
-    // async buyCar(event) {
-    //   await axios({
-    //     method: "PATCH",
-    //     url: `http://127.0.0.1:3000/cars/${this.id}`,
-    //     "content-type": "application/json",
-    //     data: { status: "sold" },
-    //   });
-    //   this.$router.go();
-    // },
+    async getPlans() {
+      const response = await axios({ method: "GET", url: "http://127.0.0.1:3000/plans" });
+
+      this.plans = response.data;
+    },
+    bookSession() {
+      console.log(this.filterPlan);
+    },
+  },
+  created() {
+    this.getPlans();
   },
 };
 </script>

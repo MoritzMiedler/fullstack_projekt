@@ -16,5 +16,6 @@ module.exports = {
     "object-curly-newline": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-param-reassign": process.env.NODE_ENV === "production" ? "warn" : "off",
     "spaced-comment": process.env.NODE_ENV === "production" ? "warn" : "off",
+    eqeqeq: process.env.NODE_ENV === "production" ? "warn" : "off",
   },
 };
