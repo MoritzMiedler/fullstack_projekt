@@ -12,6 +12,7 @@ const {
   addUser,
   addPlan,
   addSession,
+  getUserByEmail,
 } = require('../controllers/trainer');
 
 const router = express.Router();
@@ -21,6 +22,8 @@ router.get('/users', getUsers);
 router.patch('/users/:id', editUser);
 router.delete('/users/:id', deleteUser);
 router.post('/users', addUser);
+//get user via email
+router.get('/user', getUserByEmail);
 
 //plan routes
 router.get('/plans', getPlans);

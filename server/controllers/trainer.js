@@ -6,6 +6,10 @@ const getUsers = asyncHandler(async (req, res) => {
   res.status(code).json(data);
 });
 
+const getUserByEmail = asyncHandler(async (req, res) => {
+  await trainerModel.getUserByEmail(req.body.user_email);
+});
+
 const addUser = asyncHandler(async (req, res) => {
   await trainerModel.addUser(req.body.user_name, req.body.user_birthday, req.body.user_activitylevel);
 });
@@ -80,4 +84,5 @@ module.exports = {
   addSession,
   editSession,
   deleteSession,
+  getUserByEmail,
 };

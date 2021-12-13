@@ -28,7 +28,7 @@
         <v-btn to="/Plans" text active-class="amber--text darken-3 " class="mr-3">
           <span class="mx-auto">Plans</span>
         </v-btn>
-        <v-btn to="/Login" text active-class="amber--text darken-3 " class="mr-3">
+        <v-btn to="/Login" text active-class="amber--text darken-3 " v-if="!loggedIn" class="mr-3">
           <span class="mx-auto">Login</span>
         </v-btn>
       </v-app-bar>
@@ -42,7 +42,12 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      loggedIn: Boolean,
+    };
+  },
+  created() {
+    this.loggedIn = false;
   },
 };
 </script>

@@ -1,5 +1,10 @@
 <template>
-  <div><Plans :plans="plans"></Plans></div>
+  <div>
+    <Plans :plans="plans" v-if="loggedIn"> </Plans>
+    <div v-if="!loggedIn">
+      <h2>Please log in before viewing your Plans</h2>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -25,6 +30,11 @@ export default {
   },
   created() {
     this.getPlans();
+  },
+  props: {
+    loggedIn: {
+      type: Boolean,
+    },
   },
 };
 </script>

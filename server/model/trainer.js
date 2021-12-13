@@ -47,6 +47,16 @@ async function deleteUser(id) {
   };
 }
 
+async function getUserByEmail(user_email) {
+  const { rows } = await db.query('select user_password, user_email from users where user_email = $1;', [
+    user_email,
+  ]);
+  return {
+    code: 200,
+    data: rows,
+  };
+}
+
 async function getPlans() {
   const { rows } = await db.query('SELECT * FROM plans;');
   return {
@@ -140,4 +150,5 @@ module.exports = {
   addSession,
   editSession,
   deleteSession,
+  getUserByEmail,
 };
