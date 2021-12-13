@@ -51,9 +51,8 @@ export default {
       this.sessions.forEach((el) => {
         //Dauer fixen
         const stunden = el.session_period.hours;
-        console.log(stunden);
+
         const minuten = el.session_period.minutes;
-        console.log(minuten);
 
         if (stunden === undefined) {
           el.session_period = `${minuten} Minuten`;

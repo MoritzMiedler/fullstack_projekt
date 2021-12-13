@@ -23,7 +23,7 @@ export default {
     },
   },
   created() {
-    console.log(this.loggedIn);
+    console.log(this.id);
   },
 };
 </script>

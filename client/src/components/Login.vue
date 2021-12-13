@@ -153,13 +153,11 @@ export default {
         if (loginuser.user_password == this.loginPassword) {
           this.$emit("login", loginuser.user_id);
           console.log(`USER-ID: ${loginuser.user_id}`);
-          console.log(`Logged in: ${this.loggedIn}`);
 
           this.$router.push("/");
         } else {
           this.loggedIn = false;
           alert("Wrong email or password");
-          console.log(`Logged in: ${this.loggedIn}`);
         }
       } else {
         //REGISTER

@@ -21,9 +21,9 @@
       </v-simple-table>
       <p class="mx-5">{{ filterPlan.plan_desc }}</p>
       <div class="d-flex mx-5 mb-3">
-        <v-btn class="purple darken 2 white--text" to="/">Go back</v-btn>
+        <v-btn class="grey" to="/plans">Go back</v-btn>
         <v-spacer></v-spacer>
-        <v-btn class="red darken 2 white--text" @click="bookSession">Book Session</v-btn>
+        <v-btn class="amber darken-3" @click="bookSession">Book Session</v-btn>
       </div>
     </v-card>
   </div>

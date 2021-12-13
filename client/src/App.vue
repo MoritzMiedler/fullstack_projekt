@@ -50,6 +50,7 @@ export default {
   created() {},
   methods: {
     loginplusid(id) {
+      console.log(id);
       this.id = id;
       this.loggedIn = true;
     },
