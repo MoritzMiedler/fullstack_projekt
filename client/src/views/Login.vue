@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Login v-if="!loggedIn"></Login>
+    <Login v-if="!loggedIn" @login="lg($event)"></Login>
     <div v-if="loggedIn">You're already logged in</div>
   </div>
 </template>
@@ -15,6 +15,12 @@ export default {
   props: {
     loggedIn: {
       type: Boolean,
+    },
+  },
+  methods: {
+    lg(id) {
+      console.log(id);
+      this.$emit("login", id);
     },
   },
 };

@@ -18,5 +18,7 @@ module.exports = {
     "spaced-comment": process.env.NODE_ENV === "production" ? "warn" : "off",
     eqeqeq: process.env.NODE_ENV === "production" ? "warn" : "off",
     "operator-linebreak": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "implicit-arrow-linebreak": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "comma-dangle": process.env.NODE_ENV === "production" ? "warn" : "off",
   },
 };

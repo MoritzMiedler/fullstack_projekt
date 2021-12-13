@@ -25,7 +25,11 @@ export default {
   components: {},
   methods: {
     async getSessions() {
-      const sessions = await axios({ method: "get", url: "http://localhost:3000/sessions" });
+      console.log(this.id);
+      const sessions = await axios({
+        method: "get",
+        url: `http://localhost:3000/sessions/ ${this.id}`,
+      });
       //   console.log(sessions);
       this.sessions = sessions.data;
       this.sessions.forEach((el) => {
@@ -65,6 +69,11 @@ export default {
   },
   created() {
     this.getSessions();
+  },
+  props: {
+    id: {
+      type: Number,
+    },
   },
 };
 </script>

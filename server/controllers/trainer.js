@@ -48,7 +48,7 @@ const deletePlan = asyncHandler(async (req, res) => {
 });
 
 const getSessions = asyncHandler(async (req, res) => {
-  const { code, data } = await trainerModel.getSessions();
+  const { code, data } = await trainerModel.getSessions(req.params.id);
   res.status(code).json(data);
 });
 

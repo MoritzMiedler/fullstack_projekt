@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Sessions v-if="loggedIn"> </Sessions>
+    <Sessions :id="id" v-if="loggedIn" :loggedIn="loggedIn"> </Sessions>
     <div v-if="!loggedIn">
       <h2>Please log in before viewing your Sessions</h2>
     </div>
@@ -17,6 +17,9 @@ export default {
   props: {
     loggedIn: {
       type: Boolean,
+    },
+    id: {
+      type: Number,
     },
   },
   created() {

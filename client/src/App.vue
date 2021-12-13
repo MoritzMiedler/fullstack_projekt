@@ -33,7 +33,7 @@
         </v-btn>
       </v-app-bar>
       <v-main>
-        <router-view />
+        <router-view :id="id" :loggedIn="loggedIn" @login="loginplusid($event)" />
       </v-main>
     </v-app>
   </div>
@@ -43,11 +43,16 @@
 export default {
   data() {
     return {
-      loggedIn: Boolean,
+      loggedIn: false,
+      id: Number,
     };
   },
-  created() {
-    this.loggedIn = false;
+  created() {},
+  methods: {
+    loginplusid(id) {
+      this.id = id;
+      this.loggedIn = true;
+    },
   },
 };
 </script>

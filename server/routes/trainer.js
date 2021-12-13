@@ -32,7 +32,7 @@ router.delete('/plans/:id', deletePlan);
 router.post('/plans', addPlan);
 
 //session routes
-router.get('/sessions', getSessions);
+router.get('/sessions/:id', getSessions);
 router.patch('/sessions/:id', editSession);
 router.delete('/sessions/:id', deleteSession);
 router.post('/sessions', addSession);

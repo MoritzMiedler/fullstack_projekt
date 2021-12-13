@@ -47,7 +47,7 @@ DELETE http://localhost:3000/plans/10
 ###
 
 //SESSION TEST-ROUTES
-GET http://localhost:3000/sessions
+GET http://localhost:3000/sessions/1
 ###
 POST http://localhost:3000/sessions
 content-type: application/json

@@ -110,13 +110,7 @@
                   </v-col>
                   <v-spacer></v-spacer>
                   <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
-                    <v-btn
-                      x-large
-                      block
-                      :disabled="!valid"
-                      color="success"
-                      to="/"
-                      @click="validate()"
+                    <v-btn x-large block :disabled="!valid" color="success" @click="validate()"
                       >Register</v-btn
                     >
                   </v-col>
@@ -143,11 +137,7 @@ export default {
       return () => this.password === this.verify || "Password muss übereinstimmen";
     },
   },
-  props: {
-    propName: {
-      loggedIn: Boolean,
-    },
-  },
+
   methods: {
     async getUsers() {
       const users = await axios({ method: "get", url: "http://127.0.0.1:3000/users" });
@@ -156,17 +146,21 @@ export default {
     async validate() {
       if (this.$refs.loginForm.validate()) {
         const users = await this.getUsers();
-        console.log(users);
+        const loginuser = users.find((element) => element.user_email == this.loginEmail);
+        if (loginuser === undefined) {
+          alert("Wrong email or password");
+        }
+        if (loginuser.user_password == this.loginPassword) {
+          this.$emit("login", loginuser.user_id);
+          console.log(`USER-ID: ${loginuser.user_id}`);
+          console.log(`Logged in: ${this.loggedIn}`);
 
-        users.forEach((element) => {
-          if (
-            element.user_email == this.loginEmail &&
-            element.user_password == this.loginPassword
-          ) {
-            this.loggedIn = true;
-          }
-        });
-        console.log(specuser);
+          this.$router.push("/");
+        } else {
+          this.loggedIn = false;
+          alert("Wrong email or password");
+          console.log(`Logged in: ${this.loggedIn}`);
+        }
       } else {
         //REGISTER
       }

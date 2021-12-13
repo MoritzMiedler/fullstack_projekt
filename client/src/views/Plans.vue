@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Plans :plans="plans" v-if="loggedIn"> </Plans>
+    <Plans :plans="plans" :loggedIn="loggedIn" v-if="loggedIn"> </Plans>
     <div v-if="!loggedIn">
       <h2>Please log in before viewing your Plans</h2>
     </div>

@@ -98,9 +98,10 @@ async function deletePlan(id) {
   };
 }
 
-async function getSessions() {
+async function getSessions(id) {
   const { rows } = await db.query(
-    'SELECT u.user_firstname, u.user_lastname, s.session_date, s.session_period, p.plan_title, s.accepted from sessions s join users u on s.user_id = u.user_id join plans p on s.plan_id = p.plan_id;',
+    'SELECT u.user_firstname, u.user_lastname, s.session_date, s.session_period, p.plan_title, s.accepted from sessions s join users u on s.user_id = u.user_id join plans p on s.plan_id = p.plan_id where u.user_id = $1;',
+    [id],
   );
   return {
     code: 200,
