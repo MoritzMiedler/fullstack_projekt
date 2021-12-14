@@ -22,9 +22,6 @@ export default {
       type: Number,
     },
   },
-  created() {
-    console.log(this.id);
-  },
 };
 </script>
 

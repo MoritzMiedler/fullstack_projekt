@@ -19,7 +19,6 @@ export default {
   },
   methods: {
     lg(id) {
-      console.log(id);
       this.$emit("login", id);
     },
   },

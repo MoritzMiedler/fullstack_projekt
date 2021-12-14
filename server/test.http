@@ -53,11 +53,11 @@ POST http://localhost:3000/sessions
 content-type: application/json
 
 {
-    "session_dauer":"1.5h",
-    "session_datum":"2021-12-12",
-    "user_id":"3",
-    "plan_id":"1",
-    "accepted":"true"
+    "session_period":"0.5h",
+    "session_date":"2021-12-15",
+    "user_id":"1",
+    "plan_id":"9",
+    "accepted":"false"
 }
 ###
 PATCH http://localhost:3000/sessions/1

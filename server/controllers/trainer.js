@@ -54,10 +54,10 @@ const getSessions = asyncHandler(async (req, res) => {
 
 const addSession = asyncHandler(async (req, res) => {
   await trainerModel.addSession(
-    req.body.session_dauer,
-    req.body.session_datum,
-    req.body.user_id,
+    req.body.session_period,
+    req.body.session_date,
     req.body.plan_id,
+    req.body.user_id,
     req.body.accepted,
   );
 });

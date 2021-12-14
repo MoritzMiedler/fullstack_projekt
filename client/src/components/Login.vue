@@ -110,7 +110,12 @@
                   </v-col>
                   <v-spacer></v-spacer>
                   <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
-                    <v-btn x-large block :disabled="!valid" color="success" @click="validate()"
+                    <v-btn
+                      x-large
+                      block
+                      :disabled="!valid"
+                      color="amber darken-3"
+                      @click="validate()"
                       >Register</v-btn
                     >
                   </v-col>
@@ -152,7 +157,6 @@ export default {
         }
         if (loginuser.user_password == this.loginPassword) {
           this.$emit("login", loginuser.user_id);
-          console.log(`USER-ID: ${loginuser.user_id}`);
 
           this.$router.push("/");
         } else {

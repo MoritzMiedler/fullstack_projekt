@@ -34,7 +34,7 @@
       <div class="d-flex mx-5 mb-3">
         <v-btn class="grey" to="/plans">Go back</v-btn>
         <v-spacer></v-spacer>
-        <v-btn class="amber darken-3" @click="bookSession">Book Session</v-btn>
+        <v-btn class="amber darken-3" to="/sessions" @click="bookSession">Book Session</v-btn>
       </div>
     </v-card>
   </div>
@@ -49,7 +49,7 @@ export default {
       plans: [],
       date: "2021-12-15",
       time: "18:45",
-      session_period: "time:'00:30' ",
+      session_period: "0.5h",
       accepted: false,
     };
   },
@@ -58,14 +58,13 @@ export default {
       type: String,
     },
     user_id: {
-      type: Number,
+      type: String,
     },
   },
 
   computed: {
     filterPlan() {
       const a = this.plans.find((el) => el.plan_id == this.id);
-      console.log(this.plans);
       return a;
     },
   },
@@ -83,7 +82,9 @@ export default {
         data: {
           session_period: this.session_period,
           session_date: `${this.date} ${this.time}`,
-          plan_id:
+          plan_id: this.id,
+          user_id: this.user_id,
+          accepted: this.accepted,
         },
       });
     },

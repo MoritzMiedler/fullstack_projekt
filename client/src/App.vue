@@ -44,13 +44,12 @@ export default {
   data() {
     return {
       loggedIn: false,
-      id: Number,
+      id: 0,
     };
   },
   created() {},
   methods: {
     loginplusid(id) {
-      console.log(id);
       this.id = id;
       this.loggedIn = true;
     },

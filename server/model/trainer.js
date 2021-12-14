@@ -100,7 +100,7 @@ async function deletePlan(id) {
 
 async function getSessions(id) {
   const { rows } = await db.query(
-    'SELECT u.user_firstname, u.user_lastname, s.session_date, s.session_period, p.plan_title, s.accepted from sessions s join users u on s.user_id = u.user_id join plans p on s.plan_id = p.plan_id where u.user_id = $1;',
+    'SELECT s.session_id ,u.user_firstname, u.user_lastname, s.session_date, s.session_period, p.plan_title, s.accepted from sessions s join users u on s.user_id = u.user_id join plans p on s.plan_id = p.plan_id where u.user_id = $1;',
     [id],
   );
   return {
@@ -110,6 +110,7 @@ async function getSessions(id) {
 }
 
 async function addSession(session_period, session_date, plan_id, user_id, accepted) {
+  console.log(session_period, session_date, plan_id, user_id, accepted);
   await db.query(
     'insert into sessions(session_period, session_date, plan_id, user_id, accepted) values ($1,$2,$3,$4,$5);',
     [session_period, session_date, plan_id, user_id, accepted],
