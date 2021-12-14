@@ -11,7 +11,14 @@ const getUserByEmail = asyncHandler(async (req, res) => {
 });
 
 const addUser = asyncHandler(async (req, res) => {
-  await trainerModel.addUser(req.body.user_name, req.body.user_birthday, req.body.user_activitylevel);
+  await trainerModel.addUser(
+    req.body.user_firstname,
+    req.body.user_lastname,
+    req.body.user_birthday,
+    req.body.user_activitylevel,
+    req.body.user_email,
+    req.body.user_password,
+  );
 });
 
 const editUser = asyncHandler(async (req, res) => {

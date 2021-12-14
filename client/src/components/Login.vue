@@ -109,6 +109,8 @@
                     ></v-text-field>
                   </v-col>
                   <v-spacer></v-spacer>
+                  <v-date-picker v-model="date" color="amber darken-3"></v-date-picker>
+                  <v-spacer></v-spacer>
                   <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
                     <v-btn
                       x-large
@@ -148,6 +150,20 @@ export default {
       const users = await axios({ method: "get", url: "http://127.0.0.1:3000/users" });
       return users.data;
     },
+    async postUser(firstname, lastname, bday, email, password) {
+      await axios({
+        method: "post",
+        url: "http://localhost:3000/users",
+        "content-type": "application/json",
+        data: {
+          user_firstname: firstname,
+          user_lastname: lastname,
+          user_birthday: bday,
+          user_email: email,
+          user_password: password,
+        },
+      });
+    },
     async validate() {
       if (this.$refs.loginForm.validate()) {
         const users = await this.getUsers();
@@ -157,14 +173,35 @@ export default {
         }
         if (loginuser.user_password == this.loginPassword) {
           this.$emit("login", loginuser.user_id);
-
           this.$router.push("/");
         } else {
           this.loggedIn = false;
           alert("Wrong email or password");
         }
       } else {
-        //REGISTER
+        const users = await this.getUsers();
+        const registeruser = users.find((element) => element.user_email == this.email);
+        console.log(registeruser);
+        console.log(
+          this.firstName,
+          this.lastName,
+          this.date,
+          this.activitylevel,
+          this.email,
+          this.password
+        );
+        if (registeruser === undefined) {
+          this.postUser(
+            this.firstName,
+            this.lastName,
+            this.date,
+            this.activitylevel,
+            this.email,
+            this.password
+          );
+        } else {
+          alert("Email already in use");
+        }
       }
     },
     reset() {
@@ -175,6 +212,7 @@ export default {
     },
   },
   data: () => ({
+    date: "2000-01-01",
     dialog: true,
     tab: 0,
     tabs: [
@@ -182,6 +220,7 @@ export default {
       { name: "Register", icon: "mdi-account-outline" },
     ],
     valid: true,
+    activitylevel: 1,
     loggedIn: "false",
     firstName: "",
     lastName: "",
