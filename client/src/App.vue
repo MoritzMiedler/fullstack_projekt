@@ -33,7 +33,7 @@
         </v-btn>
       </v-app-bar>
       <v-main>
-        <router-view :id="id" :loggedIn="loggedIn" @login="loginplusid($event)" />
+        <router-view :id="id" :user_id="id" :loggedIn="loggedIn" @login="loginplusid($event)" />
       </v-main>
     </v-app>
   </div>

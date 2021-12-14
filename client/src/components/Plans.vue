@@ -6,6 +6,7 @@
       v-for="(plan, i) in plans"
       :key="i"
       :plan="plan"
+      :user_id="user_id"
     ></PlanCard
   ></v-row>
 </template>
@@ -20,6 +21,9 @@ export default {
   props: {
     plans: {
       type: Array,
+    },
+    user_id: {
+      type: Number,
     },
   },
   components: {

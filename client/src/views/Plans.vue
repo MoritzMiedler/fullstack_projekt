@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Plans :plans="plans" :loggedIn="loggedIn" v-if="loggedIn"> </Plans>
+    <Plans :plans="plans" :loggedIn="loggedIn" :user_id="user_id" v-if="loggedIn"> </Plans>
     <div v-if="!loggedIn">
       <h2>Please log in before viewing your Plans</h2>
     </div>
@@ -34,6 +34,9 @@ export default {
   props: {
     loggedIn: {
       type: Boolean,
+    },
+    user_id: {
+      type: Number,
     },
   },
 };
