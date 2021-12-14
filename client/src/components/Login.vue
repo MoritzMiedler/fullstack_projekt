@@ -150,7 +150,7 @@ export default {
       const users = await axios({ method: "get", url: "http://127.0.0.1:3000/users" });
       return users.data;
     },
-    async postUser(firstname, lastname, bday, email, password) {
+    async postUser(firstname, lastname, bday, activitylevel, email, password) {
       await axios({
         method: "post",
         url: "http://localhost:3000/users",
@@ -159,6 +159,7 @@ export default {
           user_firstname: firstname,
           user_lastname: lastname,
           user_birthday: bday,
+          user_activitylevel: activitylevel,
           user_email: email,
           user_password: password,
         },
@@ -220,7 +221,7 @@ export default {
       { name: "Register", icon: "mdi-account-outline" },
     ],
     valid: true,
-    activitylevel: 1,
+    activitylevel: 2,
     loggedIn: "false",
     firstName: "",
     lastName: "",

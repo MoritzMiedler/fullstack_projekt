@@ -16,6 +16,7 @@ async function addUser(
   user_email,
   user_password,
 ) {
+  console.log(user_firstname, user_lastname, user_birthday, user_activitylevel, user_email, user_password);
   await db.query(
     'insert into users(user_firstname, user_lastname,user_birthday,user_activitylevel,user_email,user_password) values ($1,$2,$3,$4,$5,$6);',
     [user_firstname, user_lastname, user_birthday, user_activitylevel, user_email, user_password],
